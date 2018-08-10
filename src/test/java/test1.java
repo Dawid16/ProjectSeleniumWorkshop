@@ -63,18 +63,21 @@ public class test1 {
         Assert.assertEquals("Wrong page title", "My Store", driver.getTitle());
 
         WebElement dress = driver.findElement(By.xpath(
-                "//li[@class='ajax_block_product col-xs-12 col-sm-4 col-md-3 first-in-line first-item-of-tablet-line first-item-of-mobile-line']//img[@title='Faded Short Sleeve T-shirts']"));
+                "//ul[@id='homefeatured']//li[contains(@class, 'first-in-line first')]"));
         WebElement addToCartButton = driver.findElement(By.xpath(
-                "//ul[@id='homefeatured']//li[@class='ajax_block_product col-xs-12 col-sm-4 col-md-3 first-in-line first-item-of-tablet-line first-item-of-mobile-line']//span[contains(text(),'Add to cart')]"));
+                "//ul[@id='homefeatured']/li[contains(@class,'first-in-line first')]//span[text()='Add to cart']"));
         WebElement proceedToCheckoutButton = driver.findElement(By.xpath(
-                "//a[@title='Proceed to checkout']/span"));
+                "//a[@title='Proceed to checkout']"));
+
 
         actions.moveToElement(dress).build().perform();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+
         addToCartButton.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
+
         proceedToCheckoutButton.click();
-        Thread.sleep(1000);
+        Thread.sleep(2000);
 
         WebElement proceedToCheckoutButton2 = driver.findElement(By.xpath(
                 "//p[@class='cart_navigation clearfix']//span"));
